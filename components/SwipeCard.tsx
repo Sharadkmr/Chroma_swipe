@@ -49,9 +49,9 @@ const SwipeCard: React.FC<SwipeCardProps> = ({ color, onSwipe, isFront }) => {
       exit={{ scale: 1.1, opacity: 0 }}
       className="absolute inset-0 flex items-center justify-center cursor-grab active:cursor-grabbing z-10"
     >
-      <div className={`w-72 h-[420px] rounded-[3.5rem] shadow-[0_40px_80px_-20px_rgba(0,0,0,0.8)] border-[12px] ${color.bgTailwind} ${color.borderTailwind} flex flex-col items-center justify-center text-white relative overflow-hidden`}>
+      <div className={`w-[65vw] max-w-[280px] h-[45vh] max-h-[400px] rounded-[2.5rem] sm:rounded-[3.5rem] shadow-[0_40px_80px_-20px_rgba(0,0,0,0.8)] border-[8px] sm:border-[12px] ${color.bgTailwind} ${color.borderTailwind} flex flex-col items-center justify-center text-white relative overflow-hidden`}>
         {/* Interior Surface */}
-        <div className="absolute inset-2 bg-black/10 rounded-[2.8rem] pointer-events-none" />
+        <div className="absolute inset-2 bg-black/10 rounded-[2rem] sm:rounded-[2.8rem] pointer-events-none" />
         
         {/* Subtle Texture */}
         <div className="absolute inset-0 opacity-10 pointer-events-none">
@@ -64,13 +64,13 @@ const SwipeCard: React.FC<SwipeCardProps> = ({ color, onSwipe, isFront }) => {
         </div>
 
         {/* Target Sample Container */}
-        <div className="z-10 bg-white/5 backdrop-blur-2xl p-10 rounded-[3rem] border border-white/20 shadow-2xl flex flex-col items-center">
-          <div className="w-24 h-24 rounded-full bg-white shadow-2xl mb-8 flex items-center justify-center overflow-hidden ring-8 ring-black/10">
+        <div className="z-10 bg-white/5 backdrop-blur-2xl p-6 sm:p-10 rounded-[2rem] sm:rounded-[3rem] border border-white/20 shadow-2xl flex flex-col items-center">
+          <div className="w-16 h-16 sm:w-24 sm:h-24 rounded-full bg-white shadow-2xl mb-4 sm:mb-8 flex items-center justify-center overflow-hidden ring-4 sm:ring-8 ring-black/10">
              <div className={`w-full h-full ${color.bgTailwind} transition-colors duration-500`} />
           </div>
           <div className="flex flex-col items-center gap-2">
-            <p className="text-[10px] font-black uppercase tracking-[0.4em] text-white/40">Swatch Sample</p>
-            <div className="w-8 h-1 bg-white/20 rounded-full" />
+            <p className="text-[8px] sm:text-[10px] font-black uppercase tracking-[0.4em] text-white/40">Swatch Sample</p>
+            <div className="w-6 sm:w-8 h-1 bg-white/20 rounded-full" />
           </div>
         </div>
 

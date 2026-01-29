@@ -138,16 +138,16 @@ const App: React.FC = () => {
         )}
       </AnimatePresence>
 
-      <header className="p-6 flex justify-between items-center z-30">
+      <header className="p-4 sm:p-6 flex justify-between items-center z-30 relative">
         <div>
-          <h1 className="text-2xl font-black text-white tracking-tighter">
+          <h1 className="text-xl sm:text-2xl font-black text-white tracking-tighter">
             CHROMA<span className="text-blue-500">SWIPE</span>
           </h1>
           <p className="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Beauty Boutique Mode</p>
         </div>
         <div className="flex items-center gap-4">
           <div className="text-right">
-            <div className="text-2xl font-black text-white leading-none">{gameState.score}</div>
+            <div className="text-xl sm:text-2xl font-black text-white leading-none">{gameState.score}</div>
             <div className="text-[10px] text-slate-500 font-bold uppercase">Matches</div>
           </div>
           {gameState.streak > 2 && (
@@ -158,59 +158,65 @@ const App: React.FC = () => {
         </div>
       </header>
 
-      {/* Dynamic Text-Only Option Labels */}
+      {/* Pin-to-Edge Directional Option Labels */}
       {currentChallenge && (
-        <div className="absolute inset-0 pointer-events-none z-20 flex flex-col justify-between items-center py-16 px-6">
+        <div className="absolute inset-0 pointer-events-none z-20">
           {/* UP OPTION */}
-          <motion.div 
-            initial={{ y: -20, opacity: 0 }} 
-            animate={{ y: 0, opacity: 1 }}
-            className="flex flex-col items-center"
-          >
-            <span className="text-[12px] font-black text-white/60 uppercase tracking-widest text-center px-4 py-2 border border-white/10 rounded-full backdrop-blur-md">
-              {currentChallenge.options.UP.name}
-            </span>
-          </motion.div>
-
-          <div className="w-full flex justify-between items-center px-4">
-            {/* LEFT OPTION */}
+          <div className="absolute top-[15%] left-0 right-0 flex justify-center px-4">
             <motion.div 
-              initial={{ x: -20, opacity: 0 }} 
-              animate={{ x: 0, opacity: 1 }}
-              className="flex flex-col items-start max-w-[120px]"
+              initial={{ y: -10, opacity: 0 }} 
+              animate={{ y: 0, opacity: 1 }}
+              className="bg-black/40 border border-white/10 px-4 py-2 rounded-full backdrop-blur-md"
             >
-              <span className="text-[12px] font-black text-white/60 uppercase tracking-widest text-left px-3 py-2 border border-white/10 rounded-xl backdrop-blur-md whitespace-normal break-words">
+              <span className="text-[10px] sm:text-[12px] font-black text-white/70 uppercase tracking-widest text-center">
+                {currentChallenge.options.UP.name}
+              </span>
+            </motion.div>
+          </div>
+
+          {/* LEFT OPTION */}
+          <div className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 flex items-center max-w-[100px] sm:max-w-[140px]">
+            <motion.div 
+              initial={{ x: -10, opacity: 0 }} 
+              animate={{ x: 0, opacity: 1 }}
+              className="bg-black/40 border border-white/10 px-3 py-2 rounded-xl backdrop-blur-md"
+            >
+              <span className="text-[10px] sm:text-[12px] font-black text-white/70 uppercase tracking-widest text-left block leading-tight">
                 {currentChallenge.options.LEFT.name}
               </span>
             </motion.div>
+          </div>
 
-            {/* RIGHT OPTION */}
+          {/* RIGHT OPTION */}
+          <div className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 flex items-center max-w-[100px] sm:max-w-[140px]">
             <motion.div 
-              initial={{ x: 20, opacity: 0 }} 
+              initial={{ x: 10, opacity: 0 }} 
               animate={{ x: 0, opacity: 1 }}
-              className="flex flex-col items-end max-w-[120px]"
+              className="bg-black/40 border border-white/10 px-3 py-2 rounded-xl backdrop-blur-md text-right"
             >
-              <span className="text-[12px] font-black text-white/60 uppercase tracking-widest text-right px-3 py-2 border border-white/10 rounded-xl backdrop-blur-md whitespace-normal break-words">
+              <span className="text-[10px] sm:text-[12px] font-black text-white/70 uppercase tracking-widest text-right block leading-tight">
                 {currentChallenge.options.RIGHT.name}
               </span>
             </motion.div>
           </div>
 
           {/* DOWN OPTION */}
-          <motion.div 
-            initial={{ y: 20, opacity: 0 }} 
-            animate={{ y: 0, opacity: 1 }}
-            className="flex flex-col items-center"
-          >
-            <span className="text-[12px] font-black text-white/60 uppercase tracking-widest text-center px-4 py-2 border border-white/10 rounded-full backdrop-blur-md">
-              {currentChallenge.options.DOWN.name}
-            </span>
-          </motion.div>
+          <div className="absolute bottom-[20%] left-0 right-0 flex justify-center px-4">
+            <motion.div 
+              initial={{ y: 10, opacity: 0 }} 
+              animate={{ y: 0, opacity: 1 }}
+              className="bg-black/40 border border-white/10 px-4 py-2 rounded-full backdrop-blur-md"
+            >
+              <span className="text-[10px] sm:text-[12px] font-black text-white/70 uppercase tracking-widest text-center">
+                {currentChallenge.options.DOWN.name}
+              </span>
+            </motion.div>
+          </div>
         </div>
       )}
 
       {/* Main Game Area */}
-      <main className="flex-1 relative flex items-center justify-center z-10">
+      <main className="flex-1 relative flex items-center justify-center z-10 px-12 overflow-visible">
         <AnimatePresence mode="wait">
           {currentChallenge && (
             <motion.div
@@ -230,19 +236,19 @@ const App: React.FC = () => {
       </main>
 
       {/* Footer Info */}
-      <footer className="p-8 flex flex-col items-center z-30">
+      <footer className="p-4 sm:p-8 flex flex-col items-center z-30 relative">
         <motion.p 
           key={feedback}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="text-slate-400 text-sm font-medium italic mb-6 text-center max-w-[280px]"
+          className="text-slate-400 text-xs sm:text-sm font-medium italic mb-4 sm:mb-6 text-center max-w-[280px]"
         >
           "{feedback}"
         </motion.p>
         
         <button 
           onClick={() => setShowStats(true)}
-          className="bg-white/5 border border-white/10 px-6 py-3 rounded-2xl text-xs font-black text-white uppercase tracking-widest hover:bg-white/10 transition-colors"
+          className="bg-white/5 border border-white/10 px-6 py-2 sm:py-3 rounded-2xl text-[10px] sm:text-xs font-black text-white uppercase tracking-widest hover:bg-white/10 transition-colors"
         >
           Collection Logs
         </button>
